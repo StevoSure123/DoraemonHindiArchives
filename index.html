@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doraemon Episodes</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        async function loadEpisodes() {
+            try {
+                const response = await fetch('eps.txt');
+                const text = await response.text();
+                const episodes = text.split('\n').filter(line => line.trim() !== '');
+
+                const episodeList = document.querySelector('.episode-list');
+                episodes.forEach((episode, index) => {
+                    const episodeParts = episode.split('|');
+                    if (episodeParts.length === 2) {
+                        const episodeNumber = index + 1;
+                        const episodeTitle = episodeParts[0].trim();
+                        const episodeLink = episodeParts[1].trim();
+
+                        const episodeDiv = document.createElement('div');
+                        episodeDiv.classList.add('episode');
+
+                        episodeDiv.innerHTML = `
+                            <a href="${episodeLink}" target="_blank">${episodeNumber}. ${episodeTitle}</a>
+                            - <a href="${episodeLink}" class="button" target="_blank">Watch or Download Now!</a>
+                        `;
+                        episodeList.appendChild(episodeDiv);
+                    }
+                });
+            } catch (error) {
+                console.error('Failed to load episodes:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadEpisodes);
+    </script>
 </head>
 <body>
     <header>
@@ -25,114 +57,8 @@
         </section>
         <section id="episodes" class="container">
             <h2>Season 9 Episodes</h2>
-            <div class="episode-list">
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1IIUu7cL6LIgoYoTotO_hrH977l4wAU7c/view?usp=drive_link" target="_blank">1. Dream Boat</a>
-                    - <a href="https://drive.google.com/file/d/1IIUu7cL6LIgoYoTotO_hrH977l4wAU7c/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/117HVLn2iRrDyKFDz0uwrC2XS2VND5GlI/view?usp=drive_link" target="_blank">2. Origami Art</a>
-                    - <a href="https://drive.google.com/file/d/117HVLn2iRrDyKFDz0uwrC2XS2VND5GlI/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/117HVLn2iRrDyKFDz0uwrC2XS2VND5GlI/view?usp=drive_link" target="_blank">3. Lets go to the beach</a>
-                    - <a href="https://drive.google.com/file/d/117HVLn2iRrDyKFDz0uwrC2XS2VND5GlI/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1cGPFhbUCq9kM_5iRf5_mVwlmzL9scsel/view?usp=drive_link" target="_blank">4. The tickling insect</a>
-                    - <a href="https://drive.google.com/file/d/1cGPFhbUCq9kM_5iRf5_mVwlmzL9scsel/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1MTCH9AE-957ftjmIrNHeFrhgBa7o64oX/view?usp=drive_linkz" target="_blank">5. Maho's wish</a>
-                    - <a href="https://drive.google.com/file/d/1MTCH9AE-957ftjmIrNHeFrhgBa7o64oX/view?usp=drive_linkz" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1jhi9n7bm7ZmVEaPhN4WELpcDGNawjoyR/view?usp=drive_link" target="_blank">6. The robot God of happiness</a>
-                    - <a href="https://drive.google.com/file/d/1jhi9n7bm7ZmVEaPhN4WELpcDGNawjoyR/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1kUGZ_IvIl15QNP3HISij8X_W1Yk6GoEM/view?usp=drive_link" target="_blank">7. Nakhare Karne Wale Robot Car</a>
-                    - <a href="https://drive.google.com/file/d/1kUGZ_IvIl15QNP3HISij8X_W1Yk6GoEM/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1rKdAzJo6DomPN5m-3bDiCcEiZ_PrwFXU/view?usp=drive_link" target="_blank">8. Wish Granting Angel</a>
-                    - <a href="https://drive.google.com/file/d/1rKdAzJo6DomPN5m-3bDiCcEiZ_PrwFXU/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1tBdKrrhwlqQBBZXQvqC6iPwbfC076S8r/view?usp=drive_link" target="_blank">9. Bird Cap</a>
-                    - <a href="https://drive.google.com/file/d/1tBdKrrhwlqQBBZXQvqC6iPwbfC076S8r/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1MZ4EOTfJ442Y5hBooPxReFV1zWGAqXPM/view?usp=drive_link" target="_blank">10. Do it right diary</a>
-                    - <a href="https://drive.google.com/file/d/1MZ4EOTfJ442Y5hBooPxReFV1zWGAqXPM/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/14Wu2Y7vhbmzlu8Rut1M64bRQ9FJ_PEVp/view?usp=drive_link" target="_blank">11. Switching Bar</a>
-                    - <a href="https://drive.google.com/file/d/14Wu2Y7vhbmzlu8Rut1M64bRQ9FJ_PEVp/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1TrZyXGHcc6S7TBOg1SB9szHKcR4Jj2ji/view?usp=drive_link" target="_blank">12. Twin Balloon</a>
-                    - <a href="https://drive.google.com/file/d/1TrZyXGHcc6S7TBOg1SB9szHKcR4Jj2ji/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/17ehUjmOBm7Gqf4YvnSzW68Q3jRqo9bUN/view?usp=drive_link" target="_blank">13. Giant Bubbles</a>
-                    - <a href="https://drive.google.com/file/d/17ehUjmOBm7Gqf4YvnSzW68Q3jRqo9bUN/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1fApk6UuTtABHELFZaFJHY-jG85dVCR72/view?usp=drive_link" target="_blank">14. Cotton Candy Cloud Making Machine</a>
-                    - <a href="https://drive.google.com/file/d/1fApk6UuTtABHELFZaFJHY-jG85dVCR72/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1UqK-tvljgaEiI9Pkmpmd232kdeUiGHb1/view?usp=drive_link" target="_blank">15. Exploration Pants</a>
-                    - <a href="https://drive.google.com/file/d/1UqK-tvljgaEiI9Pkmpmd232kdeUiGHb1/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1TgmRh4yBgx_bu4x17XRv3EY70Xm8UV9h/view?usp=drive_link" target="_blank">16. Moms Rock Cave</a>
-                    - <a href="https://drive.google.com/file/d/1TgmRh4yBgx_bu4x17XRv3EY70Xm8UV9h/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/18122DknKgHGXEAOyVvos2a4xCD7nx1jS/view?usp=drive_link" target="_blank">17. Spot the tracking dog</a>
-                    - <a href="https://drive.google.com/file/d/18122DknKgHGXEAOyVvos2a4xCD7nx1jS/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1cmnlF7fXpNyw3uQcKNGxKnYaApYmPgXd/view?usp=drive_link" target="_blank">18. Virtual Game Board</a>
-                    - <a href="https://drive.google.com/file/d/1cmnlF7fXpNyw3uQcKNGxKnYaApYmPgXd/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1py1YqZQynWg7drsuLtVrPjC_4mDPE8tF/view?usp=drive_link" target="_blank">19. Introducing Nobiko (Nobiko's Appearance!)</a>
-                    - <a href="https://drive.google.com/file/d/1py1YqZQynWg7drsuLtVrPjC_4mDPE8tF/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1kawixKcyqHpYIfy5fyY9szUd52_u6067/view?usp=drive_link" target="_blank">20. Transforming Bubble Gum</a>
-                    - <a href="https://drive.google.com/file/d/1kawixKcyqHpYIfy5fyY9szUd52_u6067/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1uI-RjJVYAP4bFNRWooJV0yM7TTN-PFKE/view?usp=drive_link" target="_blank">21. Snow Glove Assist</a>
-                    - <a href="https://drive.google.com/file/d/1uI-RjJVYAP4bFNRWooJV0yM7TTN-PFKE/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1JDxN8w2RQO0rHdUH0_GrVfleswA9BT3z/view?usp=drive_link" target="_blank">22. The Mumma's Net</a>
-                    - <a href="https://drive.google.com/file/d/1JDxN8w2RQO0rHdUH0_GrVfleswA9BT3z/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1ERH4jKHLLEtM_uvW15vlXyIiHClMyVX9/view?usp=drive_link" target="_blank">23. Capture Cam</a>
-                    - <a href="https://drive.google.com/file/d/1ERH4jKHLLEtM_uvW15vlXyIiHClMyVX9/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1FQ6TSH9m2YbNWBcEcz_0U99MmqVSWbcp/view?usp=drive_link" target="_blank">24. Chanpon Belt (Champion Belt)</a>
-                    - <a href="https://drive.google.com/file/d/1FQ6TSH9m2YbNWBcEcz_0U99MmqVSWbcp/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-                <div class="episode">
-                    <a href="https://drive.google.com/file/d/1q3VvEM2Zaw5ADnv7hFEZCGZVAoY2NjsK/view?usp=drive_link" target="_blank">25. The Promise Day</a>
-                    - <a href="https://drive.google.com/file/d/1q3VvEM2Zaw5ADnv7hFEZCGZVAoY2NjsK/view?usp=drive_link" class="button" target="_blank">Watch or Download Now!</a>
-                </div>
-            </div>
-            <p class="note">More episodes are going to come soon...</p>
+            <div class="episode-list"></div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Doraemon Episodes. All rights reserved.</p>
-    </footer>
 </body>
 </html>
-  
