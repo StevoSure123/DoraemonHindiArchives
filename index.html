@@ -6,13 +6,15 @@
     <title>Doraemon Episodes</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        async function loadEpisodes() {
+        async function loadEpisodes(season, fileName) {
             try {
-                const response = await fetch('eps.txt');
+                const response = await fetch(fileName);
                 const text = await response.text();
                 const episodes = text.split('\n').filter(line => line.trim() !== '');
 
-                const episodeList = document.querySelector('.episode-list');
+                const episodeList = document.querySelector(`.${season}-episode-list`);
+                episodeList.innerHTML = ''; // Clear existing content
+
                 episodes.forEach((episode, index) => {
                     const episodeParts = episode.split('|');
                     if (episodeParts.length === 2) {
@@ -31,11 +33,14 @@
                     }
                 });
             } catch (error) {
-                console.error('Failed to load episodes:', error);
+                console.error(`Failed to load ${season} episodes:`, error);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', loadEpisodes);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadEpisodes('season9', 'season-9.txt');
+            loadEpisodes('season10', 'season-10.txt');
+        });
     </script>
 </head>
 <body>
@@ -44,7 +49,8 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#episodes">Episodes</a></li>
+                <li><a href="#season9">Season 9</a></li>
+                <li><a href="#season10">Season 10</a></li>
             </ul>
             <button class="menu-toggle">☰</button>
         </nav>
@@ -55,9 +61,13 @@
             <h2>Welcome to Doraemon Episodes</h2>
             <p>Note - The episodes are not listed correctly; they are placed randomly.</p>
         </section>
-        <section id="episodes" class="container">
+        <section id="season9" class="container">
             <h2>Season 9 Episodes</h2>
-            <div class="episode-list"></div>
+            <div class="season9-episode-list"></div>
+        </section>
+        <section id="season10" class="container">
+            <h2>Season 10 Episodes</h2>
+            <div class="season10-episode-list"></div>
         </section>
     </main>
 </body>
