@@ -134,3 +134,11 @@ footer {
         margin: 10px 0;
     }
 }
+
+.coming-soon {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #344360; 
+    margin-top: 20px;
+}
