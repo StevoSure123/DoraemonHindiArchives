@@ -1,24 +1,19 @@
-/* Font Import */
-@font-face {
-    font-family: 'SUSE';
-    src: url('fonts/SUSE-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900; /* Adjust based on the weights available in the font */
-    font-style: normal;
-}
+/* Import Varela Round Font */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 /* General Styles */
 body {
-    font-family: 'SUSE', Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Varela Round', sans-serif;
+    color: #333;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
 
 header {
-    background: #333;
+    background-color: #333;
     color: #fff;
-    padding: 1rem 0;
+    padding: 1rem;
     text-align: center;
 }
 
@@ -27,13 +22,13 @@ header h1 {
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
 }
 
 nav ul li {
     display: inline;
-    margin-right: 10px;
+    margin: 0 1rem;
 }
 
 nav ul li a {
@@ -41,77 +36,73 @@ nav ul li a {
     text-decoration: none;
 }
 
-.menu-toggle {
-    display: none; /* Hidden by default, can be enabled for mobile responsiveness */
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
-/* Main Content */
 main {
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
-.home-image {
-    width: 300px; /* Adjust if needed */
-    height: auto;
+.seasons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.season {
+    text-align: center;
+    margin: 1rem;
 }
 
 .season-image {
-    width: 300px; /* Same as the thumbnail image */
+    width: 100%;
+    max-width: 300px;
     height: auto;
-    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
 }
 
-.season-title {
-    font-size: 1.5rem;
-    text-align: center;
-    display: block;
-    margin-bottom: 2rem;
+.season-image:hover {
+    transform: scale(1.05);
 }
 
-.episode-list {
-    margin-top: 1rem;
+.season p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
 }
 
-.episode {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.episode-list .episode {
+    margin-bottom: 1.5rem; /* Ensures a clear gap between episodes */
 }
 
 .episode a {
-    color: #333;
     text-decoration: none;
+    color: #007bff;
 }
 
-.episode a.button {
-    display: inline-block;
+.episode a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    color: #fff !important; /* Ensure button text is white */
+    background-color: #007bff;
     padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    background: #007bff;
-    color: #fff;
     border-radius: 5px;
     text-decoration: none;
+    display: inline-block; /* Ensures padding and background are applied correctly */
+    margin-top: 0.5rem; /* Space between the text and the button */
 }
 
-.episode a.button:hover {
-    background: #0056b3;
-}
-
-/* Footer */
-footer {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-footer p {
-    margin: 0;
+.button:hover {
+    background-color: #0056b3;
 }
