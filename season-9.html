@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season 9 Episodes</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        async function loadEpisodes() {
+            try {
+                const response = await fetch('season-9.txt');
+                const text = await response.text();
+                const episodes = text.split('\n').filter(line => line.trim() !== '');
+
+                const episodeList = document.querySelector('.episode-list');
+                episodes.forEach((episode, index) => {
+                    const episodeParts = episode.split('|');
+                    if (episodeParts.length === 2) {
+                        const episodeNumber = index + 1;
+                        const episodeTitle = episodeParts[0].trim();
+                        const episodeLink = episodeParts[1].trim();
+
+                        const episodeDiv = document.createElement('div');
+                        episodeDiv.classList.add('episode');
+
+                        episodeDiv.innerHTML = `
+                            <a href="${episodeLink}" target="_blank">${episodeNumber}. ${episodeTitle}</a>
+                            - <a href="${episodeLink}" class="button" target="_blank">Watch or Download Now!</a>
+                        `;
+                        episodeList.appendChild(episodeDiv);
+                    }
+                });
+            } catch (error) {
+                console.error('Failed to load episodes:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadEpisodes);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Season 9 Episodes</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="season-10.html">Season 10</a></li>
+                <li><a href="season-11.html">Season 11</a></li>
+            </ul>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </header>
+    <main>
+        <section id="season9" class="container">
+            <h2>Season 9 Episodes</h2>
+            <div class="episode-list"></div>
+        </section>
+    </main>
+</body>
+</html>
