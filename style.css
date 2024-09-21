@@ -4,18 +4,23 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #181818; /* Dark mode background for all pages */
+    color: #f1f1f1; /* Light text for all pages */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
-    background-color: #333;
+    background-color: #1c1c1c; /* Consistent dark header for all pages */
     color: #fff;
-    padding: 10px 0;
+    padding: 15px 0;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 nav ul {
@@ -32,17 +37,108 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+    border-radius: 10px;
 }
 
-.menu-toggle {
-    display: none;
+nav ul li a:hover {
+    color: #61dafb; /* Light blue hover effect */
+    transform: scale(1.1); /* Slight zoom effect */
 }
 
-main {
+/* Toggle Switch Styles */
+.switch-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #ffffff; /* Light mode toggle background */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Box and Content Styles (Unified) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
+    text-align: center;
 }
 
-/* Home Page Styles */
+.box {
+    background-color: rgba(255, 255, 255, 0.05); /* Darkened, semi-transparent box */
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: #f1f1f1; /* Make text inside box more visible */
+}
+
+.box:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly more visible on hover */
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.box a {
+    color: #61dafb;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.box a:hover {
+    color: #82e0ff; /* Slightly brighter blue */
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Home Page Styles (Unified) */
 #home {
     text-align: center;
 }
@@ -51,58 +147,108 @@ main {
     width: 100%;
     max-width: 600px;
     height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.season-container {
-    text-align: center;
+.home-image:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
 }
 
-.season-image {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-}
-
-.season-text {
-    text-align: center;
-    font-size: 1.2em;
-    margin: 10px 0;
-}
-
-/* Episodes Page Styles */
+/* Episodes Page Styles (Unified) */
 #episodes {
     text-align: center;
 }
 
 .episode-list {
     margin: 20px auto;
-    max-width: 800px; /* Restrict width for better readability */
+    max-width: 800px; /* Restrict width for readability */
 }
 
 .episode {
     margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.05); /* Dark background for episodes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: #f1f1f1; /* Brightened text */
+}
+
+.episode:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly more visible on hover */
+    transform: translateY(-5px); /* Lift effect on hover */
 }
 
 .episode a {
     text-decoration: none;
-    color: #000000;
-    font-size: 1.1em;
+    color: #61dafb; /* Brightened link color */
+    font-size: 1.2em;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
 }
 
+.episode a:hover {
+    color: #82e0ff; /* Brighter hover effect */
+}
+
+/* Button Styles */
 .button {
-    background-color: #b5b5b5; /* Blue background color */
-    color: #b8b8b8; /* White text color */
-    padding: 5px 10px;
+    background-color: #007bff; /* Button primary color */
+    color: #fff; /* White text */
+    padding: 10px 15px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 20px;
+    display: inline-block;
+    transition: background-color 0.3s ease; /* Remove scale effect */
 }
 
 .button:hover {
-    background-color: #d6d6d6; /* Darker blue on hover */
+    background-color: #0056b3; /* Darker hover color */
+}
+
+/* Coming Soon Section (Unified) */
+.coming-soon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #181818; /* Dark background */
+    text-align: center;
+    padding: 20px;
+}
+
+.coming-soon-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05); /* Unified transparent box style */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coming-soon-content:hover {
+    transform: scale(1.02); /* Slight zoom */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+.coming-soon h2 {
+    font-family: 'Varela Round', sans-serif;
+    color: #f1f1f1; /* Brightened text */
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: bold; /* Make text bold */
+}
+
+.coming-soon p {
+    font-family: 'Varela Round', sans-serif;
+    color: #f1f1f1; /* Brightened text */
+    font-size: 1.2em;
 }
 
 /* Responsive Design */
@@ -116,40 +262,8 @@ main {
         margin: 10px 0;
     }
 
-    .season-image {
+    .season-image,
+    .home-image {
         max-width: 90%;
     }
-}
-/* Coming Soon Section */
-.coming-soon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f5f5f5; /* Light background for contrast */
-    text-align: center;
-    padding: 20px;
-}
-
-.coming-soon-content {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 2px solid #333; /* Dark border to stand out */
-    border-radius: 8px;
-    background: #fff; /* White background for readability */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.coming-soon h2 {
-    font-family: 'Varela Round', sans-serif;
-    color: #333; /* Dark text for contrast */
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-.coming-soon p {
-    font-family: 'Varela Round', sans-serif;
-    color: #666; /* Slightly lighter text */
-    font-size: 1.2em;
 }
